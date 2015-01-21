@@ -1,2 +1,0 @@
-# zoli
-ZOLI application
