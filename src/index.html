@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="zoli" ng-controller="AppController as AppCtrl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="ZOLI Application" />
+    <meta content="" name="Stephane.Talon@adp.com" />
+    <title ng-bind="pageTitle"></title>
+
+    <!-- font awesome from BootstrapCDN -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+</head>
+<body>
+    <header>
+        <nav class="container navbar-default">
+            <ul class="nav navbar-nav">
+                <li ui-sref-active="active">
+                    <a ui-sref="home">Accueil</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="applixml">Menu</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="messagecatalog">Messages catalogues</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="l10nmessages">Pages</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="xsdmessages">Messages applicatif</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="about">A propos</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="fa fa-cog fa-fw"></span> Param&egrave;trage</a></li>
+                <li ng-hide="appCtrl.connected"><a href="#" ng-click="appCtrl.login()"><span class="fa fa-sign-in"></span>Login</a></li>
+                <li ng-show="appCtrl.connected"><a href="#" ng-click="appCtrl.logout()"><span class="fa fa-sign-out"></span>Logout</a></li>
+              </ul>
+        </nav>
+    </header>
+
+    <div class="container" ui-view="main"></div>
+
+    <footer class="container">
+        <span class="fa fa-copyright fa-fw"/> <%= date %> <%= author %>
+    </footer>
+</body>
+</html>
